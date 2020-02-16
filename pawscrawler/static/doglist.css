@@ -1,0 +1,40 @@
+body {
+    font-family: arial, sans-serif;
+}
+
+.pet-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.pet-table td, .pet-table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr.bad_status {
+    background-color: #f78b8b;
+}
+
+tr.good_status {
+    background-color: #8ff78b;
+}
+
+tr.unstable_status {
+    background-color: #f5f78b;
+}
+
+tr.status i {
+    display: none;
+    text-align: center;
+}
+
+tr.status i:hover, th.sortable_header {
+    cursor: pointer;
+}
+
+tr.neutral_status i.fa-square, tr.good_status i.fa-check, tr.bad_status i.fa-times, tr.unstable_status i.fa-circle {
+    display: block;
+}

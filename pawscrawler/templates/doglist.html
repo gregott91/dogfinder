@@ -1,0 +1,86 @@
+{% load static %}
+
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'doglist.css' %}">
+<script type="text/javascript" src="{% static 'doglist.js' %}"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" crossorigin="anonymous">
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Dogs</title>
+    </head>
+    <body>
+        <table class="pet-table">
+            <tr>
+                <th onclick="sortStatus(this)" class="sortable_header">
+                    Status
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Breed
+                </th>
+                <th>
+                    Gender
+                </th>
+                <th onclick="sortAge(this)" class="sortable_header">
+                    Age
+                </th>
+                <th onclick="sortWeight(this)" class="sortable_header">
+                    Weight
+                </th>
+                <th>
+                    Location
+                </th>
+                <th>
+                    Url
+                </th>
+            </tr>
+            {% for pet in pets %}
+                <tr
+                    {% if pet.status == 1 %}
+                        class="status good_status"
+                    {% elif pet.status == -1 %}
+                        class="status bad_status"
+                    {% elif pet.status == 2 %}
+                        class="status unstable_status"
+                    {% else %}
+                        class="status neutral_status"
+                    {% endif %}
+                >
+                    <td onclick="changeStatus(this)" data-status="{{pet.status}}" data-id="{{pet.id}}">
+                        <i class="far fa-square"></i>
+                        <i class="fas fa-check"></i>
+                        <i class="fas fa-times"></i>
+                        <i class="far fa-circle"></i>
+                    </td>
+                    <td>
+                        {{ pet.name }}
+                    </td>
+                    <td>
+                        {{ pet.breed }}
+                    </td>
+                    <td>
+                        {{ pet.gender }}
+                    </td>
+                    <td>
+                        {{ pet.age }}
+                    </td>
+                    <td>
+                        {{ pet.weight }}
+                    </td>
+                    <td>
+                        {{ pet.location }}
+                    </td>
+                    <td>
+                        <a href="{{ pet.url }}">View on Paws</a>
+                    </td>
+                </tr
+                >
+            {% endfor %}
+        </table>
+    </body>
+</html>

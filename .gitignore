@@ -1,0 +1,8 @@
+# Ignore pycache folder
+__pycache__
+
+# Ignore migrations folder
+migrations
+
+# Ignore sqlite files
+*.sqlite3
